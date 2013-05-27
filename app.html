@@ -1,0 +1,53 @@
+<head >
+  <title>myapp</title>
+  <script>
+  var person = prompt("Enter your name","Anonymous");
+  </script>
+</head>
+
+<body >
+  {{> board}}
+</body>
+
+
+<template name="board">
+  <div class="board">
+          <div class='span12'>
+            <h1>Notice Board</h1>
+            <input type='text' id="tbx" placeholder='enter post here'/>
+            <button class='post'>Post!</button>
+        </div>
+    {{#each notices}}
+      {{> notice}}
+    {{/each}}
+  
+</div>
+</template>
+
+<template name="notice">
+    <div class='row' style='border-bottom: dotted 1px #aeaeae'>
+        <div class='span10'>
+            <h3>{{content}}</h3>
+            <p>By {{writer}}. 
+			{{#if likersNum }}
+				{{#if many_likes}}
+					{{likersNum}}
+				{{else}}
+					{{print_likers}}
+				{{/if}}
+			{{else}}
+				Nobody
+			{{/if}}
+			like this.</p>
+			
+        </div>
+        <div class='span2'>
+            <button class='btn' style='margin-top: 30px'>Like!</button>
+        </div>
+    </div>
+</template>
+
+
+
+
+
